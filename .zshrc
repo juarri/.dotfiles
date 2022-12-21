@@ -1,0 +1,1 @@
+/home/juarri/.zshrc

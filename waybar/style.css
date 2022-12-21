@@ -1,0 +1,126 @@
+@define-color brightyellow #fffac2;
+@define-color brightmint   #5de4c7;
+@define-color lowermint    #5fb3a1;
+@define-color blueishgreen #42675a;
+
+@define-color lowerblue          #89ddff;
+@define-color lightblue          #add7ff;
+@define-color desaturatedblue    #91b4d5;
+@define-color bluishgraybrighter #7390aa;
+
+@define-color hotred #d0679d;
+@define-color pink   #f087bd;
+
+@define-color gray       #a6accd;
+@define-color darkergray #767c9d;
+@define-color bluishgray #506477;
+
+@define-color offwhite  #e4f0fb;
+@define-color selection #717cb4;
+@define-color focus     #303340;
+
+@define-color bg    #1b1e28;
+@define-color white #ffffff;
+@define-color black #000000;
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Jet Brains Mono Nerd Font", monospace;
+  font-size: 14px;
+  min-height: 0;
+}
+
+#waybar {
+  background: @bg;
+  color: @offwhite;
+}
+
+#workspaces {
+  border-radius: 1rem;
+  margin: 4px;
+  background-color: @focus;
+  margin-left: 1rem;
+}
+
+#workspaces button {
+  color: @gray;
+  border-radius: 1rem;
+}
+
+#workspaces button.active {
+  color: @brightmint;
+  border-radius: 1rem;
+}
+
+#workspaces button:hover {
+  color: @bluishgray;
+  border-radius: 1rem;
+}
+
+#window,
+#tray,
+#backlight,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#custom-music,
+#custom-launcher,
+#custom-updates,
+#custom-nordvpn,
+#custom-power {
+  padding: 0rem 0.5rem;
+}
+
+#cpu,
+#memory,
+#disk,
+#temperature {
+  color: @gray;
+}
+
+#battery {
+  color: @brightmint;
+}
+
+#battery.charging {
+  color: @brightmint;
+}
+
+#battery.warning:not(.charging) {
+  color: @hotred;
+}
+
+#backlight {
+  color: @brightyellow;
+  padding-right: 1.25rem;
+}
+
+#network {
+  color: @lightblue;
+  padding-right: 1.25rem;
+}
+
+#pulseaudio {
+  color: @gray;
+}
+
+#custom-music {
+  color: @hotred;
+  border-radius: 1rem;
+  margin-left: 1rem;
+}
+
+#custom-power {
+  margin-right: 1rem;
+  padding-right: 1.2rem;
+}
+
+#tray {
+  border-radius: 1rem;
+}
