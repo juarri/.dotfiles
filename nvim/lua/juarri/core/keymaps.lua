@@ -11,7 +11,7 @@ local keymap = vim.keymap -- for conciseness
 keymap.set("i", "jk", "<ESC>")
 
 -- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>")
+keymap.set("n", "<leader>nh", ":nohl<cr>")
 
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
@@ -19,11 +19,6 @@ keymap.set("n", "x", '"_x')
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>") -- increment
 keymap.set("n", "<leader>-", "<C-x>") -- decrement
-
--- format
-vim.keymap.set("n", "<leader>F", function()
-	vim.lsp.buf.format()
-end)
 
 -- URL handling
 -- source: https://sbulav.github.io/vim/neovim-opening-urls/
@@ -39,15 +34,16 @@ end
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
-keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
+keymap.set("n", "<leader>sx", "<cmd>close<cr>") -- close current split window
 
-keymap.set("n", "<leader>tc", ":tabnew<CR>") -- create new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
-keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
+-- tab management
+keymap.set("n", "<leader>tc", "<cmd>tabnew<cr>") -- create new tab
+keymap.set("n", "<leader>tx", "<cmd>tabclose<cr>") -- close current tab
+keymap.set("n", "<leader>tn", "<cmd>tabn<cr>") --  go to next tab
+keymap.set("n", "<leader>tp", "<cmd>tabp<cr>") --  go to previous tab
 
 -- tmux
-keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")
 
 ----------------------
 -- Plugin Keybinds
@@ -60,16 +56,16 @@ vim.keymap.set("n", "<leader>z", function()
 end)
 
 -- inc-rename
-keymap.set("n", "<leader>rn", ":IncRename")
+keymap.set("n", "<leader>rn", "<cmd>IncRename<cr>")
 
 -- vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
+keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<cr>") -- toggle split window maximization
 
 -- nvim-tree
-keymap.set("n", "<leader>e", "<cmd>lua require('lf').start()<CR>", { noremap = true })
+keymap.set("n", "<leader>e", "<cmd>lua require('lf').start()<cr>", { noremap = true })
 
 -- lazy git
-keymap.set("n", "<leader>gg", ":LazyGit<CR>") -- toggle lazy git explorer
+keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>") -- toggle lazy git explorer
 
 -- telescope
 -- See `:help telescope.builtin`
@@ -99,7 +95,7 @@ keymap.set("n", "<leader>gw", require("telescope").extensions.git_worktree.git_w
 keymap.set("n", "<leader>gt", require("telescope").extensions.git_worktree.create_git_worktree) -- create worktree ["gwc" for git create worktree]
 
 -- restart lsp server (not on youtube nvim video)
-keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+keymap.set("n", "<leader>rs", "<cmd>LspRestart<cr>") -- mapping to restart lsp if necessary
 
 -- trouble
 keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
@@ -113,30 +109,8 @@ keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, 
 keymap.set("n", "<leader>ff", require("grapple").popup_tags, {})
 keymap.set("n", "<leader>ft", require("grapple").toggle, {})
 
-keymap.set("n", "<leader>f1", function()
-	require("grapple").select({ key = 1 })
-end, {})
-keymap.set("n", "<leader>f2", function()
-	require("grapple").select({ key = 2 })
-end, {})
-keymap.set("n", "<leader>f3", function()
-	require("grapple").select({ key = 3 })
-end, {})
-keymap.set("n", "<leader>f4", function()
-	require("grapple").select({ key = 4 })
-end, {})
-keymap.set("n", "<leader>f5", function()
-	require("grapple").select({ key = 5 })
-end, {})
-keymap.set("n", "<leader>f6", function()
-	require("grapple").select({ key = 6 })
-end, {})
-keymap.set("n", "<leader>f7", function()
-	require("grapple").select({ key = 7 })
-end, {})
-keymap.set("n", "<leader>f8", function()
-	require("grapple").select({ key = 8 })
-end, {})
-keymap.set("n", "<leader>f9", function()
-	require("grapple").select({ key = 9 })
-end, {})
+for i = 1, 9 do
+	keymap.set("n", string.format("<leader>f%s", i), function()
+		require("grapple").select({ key = i })
+	end, {})
+end
