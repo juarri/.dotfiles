@@ -64,8 +64,8 @@ keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<cr>") -- toggle split window
 -- nvim-tree
 keymap.set("n", "<leader>e", "<cmd>lua require('lf').start()<cr>", { noremap = true })
 
--- lazy git
-keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>") -- toggle lazy git explorer
+-- gitui
+keymap.set("n", "<leader>gg", require("gitui").open) -- toggle lazy git explorer
 
 -- telescope
 -- See `:help telescope.builtin`
@@ -91,8 +91,8 @@ keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git co
 keymap.set("n", "<leader>gf", "<cmd>Telescope git_files<cr>") -- list all git files (use <cr> to checkout) ["gf" for git files]
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
-keymap.set("n", "<leader>gw", require("telescope").extensions.git_worktree.git_worktrees) -- list current worktrees ["gw" for git worktrees]
-keymap.set("n", "<leader>gt", require("telescope").extensions.git_worktree.create_git_worktree) -- create worktree ["gwc" for git create worktree]
+keymap.set("n", "<leader>gtt", require("telescope").extensions.git_worktree.git_worktrees) -- list current worktrees ["gw" for git worktrees]
+keymap.set("n", "<leader>gtc", require("telescope").extensions.git_worktree.create_git_worktree) -- create worktree ["gwc" for git create worktree]
 
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", "<cmd>LspRestart<cr>") -- mapping to restart lsp if necessary
