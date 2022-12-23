@@ -1,6 +1,6 @@
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
 
-PATH="$PATH":"$HOME/.local/scripts/"
+PATH="$PATH":"$HOME/.local/bin/"
 
 bindkey -s ^f "tmux-sessionizer\n"
 
