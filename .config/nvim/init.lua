@@ -1,21 +1,16 @@
-require("juarri.plugins-setup")
-require("juarri.plugins.impatient")
-require("juarri.core.options")
-require("juarri.core.keymaps")
-require("juarri.core.colorscheme")
-require("juarri.plugins.lualine")
-require("juarri.plugins.nvim-cmp")
-require("juarri.plugins.lsp.mason")
-require("juarri.plugins.lsp.lspsaga")
-require("juarri.plugins.lsp.lspconfig")
-require("juarri.plugins.lsp.null-ls")
-require("juarri.plugins.treesitter")
-require("juarri.plugins.telescope")
-require("juarri.plugins.lf")
-require("juarri.plugins.autopairs")
-require("juarri.plugins.comment")
-require("juarri.plugins.gitui")
-require("juarri.plugins.gitsigns")
-require("juarri.plugins.zenmode")
-require("juarri.plugins.leap")
-require("juarri.plugins.fidget")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("keymaps")
+require("options")
+require("lazy").setup("plugins")
